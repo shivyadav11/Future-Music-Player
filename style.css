@@ -1,0 +1,276 @@
+/* ==========================
+   Body & Background
+========================== */
+body {
+  margin: 0;
+  padding: 0;
+  background: url("image.jpeg.avif") no-repeat center center/cover;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Overlay for clarity on background image */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  /* background: #352620; */
+  backdrop-filter: blur(4px);
+  z-index: 0;
+}
+
+/* Keep player & drawer above overlay */
+.player, #playlistBtn, .drawer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================
+   Playlist Button (Hamburger)
+========================== */
+#playlistBtn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  font-size: 28px;
+  background: #352620;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2000;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: transform 0.2s;
+}
+#playlistBtn:hover { transform: scale(1.1); }
+
+/* ==========================
+   Player (Mobile First)
+========================== */
+.player {
+  width: 95%;
+  max-width: 380px;
+  margin: auto;
+  border-radius: 24px;
+  padding: 16px;
+  background: #352620;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Cover Image */
+.cover {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+}
+
+/* Title & Artist */
+#title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 6px 0;
+}
+#artist {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 12px;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}
+.controls button {
+  background: linear-gradient(135deg,#ff5f6d,#ffc371);
+  border: none;
+  margin: 0 10px;
+  padding: 14px;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: transform 0.2s;
+}
+.controls button:hover { transform: scale(1.15); }
+
+/* Progress bar */
+#progress {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 6px;
+  background: #444;
+  outline: none;
+  margin: 12px 0;
+}
+#progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ff5f6d;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+#time {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: #bbb;
+}
+
+/* Volume */
+label { font-size: 13px; }
+#volume {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #444;
+  margin-top: 8px;
+}
+#volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #3498db;
+  cursor: pointer;
+}
+
+/* ==========================
+   Drawer (Playlist)
+========================== */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  transition: right 0.4s ease-in-out;
+  padding: 20px;
+  z-index: 1500;
+  overflow-y: auto;
+  background: rgba(20,20,20,0.95);
+  backdrop-filter: blur(10px);
+}
+.drawer.open { right: 0; }
+
+/* Close Drawer Button */
+#closeDrawer {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 26px;
+  float: right;
+  cursor: pointer;
+}
+
+/* Playlist Items */
+#playlist {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+#playlist li {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  padding: 10px;
+  border-radius: 14px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.05);
+  transition: all 0.3s;
+}
+#playlist li img {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  margin-right: 12px;
+  object-fit: cover;
+}
+#playlist li strong {
+  font-size: 15px;
+}
+#playlist li small {
+  font-size: 12px;
+  color: #aaa;
+}
+#playlist li.active {
+  background: linear-gradient(135deg,#ff5f6d,#ffc371);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+#playlist li:hover { transform: scale(1.02); }
+
+/* Delete button */
+#playlist li button {
+  background: #e74c3c;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  margin-left: auto;
+  color: #fff;
+}
+
+/* Inputs & Add Song */
+#fileInput, #artistInput, #coverInput, #addSongBtn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: 1px solid #444;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+#addSongBtn {
+  cursor: pointer;
+  font-weight: bold;
+  background: linear-gradient(135deg,#36d1dc,#5b86e5);
+  border: none;
+}
+#dropZone {
+  width: 100%;
+  height: 60px;
+  border: 2px dashed #aaa;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #ccc;
+  background: rgba(255,255,255,0.05);
+}
+
+/* ==========================
+   Bigger Screens (Tablet/Desktop)
+========================== */
+@media (min-width: 768px) {
+  .player {
+    max-width: 420px;
+    padding: 20px;
+  }
+  .drawer {
+    width: 400px;
+    right: -400px;
+  }
+  .drawer.open { right: 0; }
+}
