@@ -19,3 +19,4 @@ HTML5
 CSS3
 Vanilla JavaScript
 <img width="1834" height="911" alt="Screenshot 2026-01-28 110842" src="https://github.com/user-attachments/assets/883d80ac-eb60-4226-a678-ba80230cbebe" />
+<img width="1923" height="911" alt="Screenshot 2026-01-28 110859" src="https://github.com/user-attachments/assets/edbcc256-7b3d-4efe-8630-2df7c1cb0a20" />
